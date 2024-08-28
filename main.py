@@ -1,17 +1,22 @@
 from pyicloud import PyiCloudService
-from dotenv import load_dotenv
+from pwinput import pwinput
+import json
 import os
-import sys
 
 # other modules
 from auth import auth
 from download import download_photos
 
-# get environment variables from .env file
-load_dotenv()
+# get config variables
+with open("config.json", "r") as f:
+    config = json.load(f)
 
 # sign in to icloud
-api = auth(os.getenv('ICLOUD_USER'), os.getenv('ICLOUD_PASSWORD'))
+# api = auth(os.getenv('ICLOUD_USER'), os.getenv('ICLOUD_PASSWORD'))
+
+icloud_user = input("Please enter your iCloud username:" )
+icloud_pass = pwinput("Please enter your iCloud password: ")
+api = auth(icloud_user, icloud_pass)
 
 # download photos
-download_photos(api, '/home/sintacks/Pictures/Album', redownload_all=True)
+download_photos(api, config["download_target"], redownload_all=config["redownload_all"])

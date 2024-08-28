@@ -89,7 +89,6 @@ def convert_single_heic_to_png(heic_file_path):
         # Get rid of HEIC
         os.remove(heic_file_path) 
         
-        print(f"Converted {heic_file_path} to {png_file_path}")
     except Exception as e:
         print(f"Failed to convert {heic_file_path}: {e}")
 

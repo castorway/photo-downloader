@@ -29,4 +29,5 @@ def auth(
             if not result:
                 print("Failed to request trust. You will likely be prompted for the code again in the coming weeks")
 
+    print("Authenticated!")
     return api
