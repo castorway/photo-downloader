@@ -14,4 +14,4 @@ load_dotenv()
 api = auth(os.getenv('ICLOUD_USER'), os.getenv('ICLOUD_PASSWORD'))
 
 # download photos
-download_photos(api, './Photos', redownload_all=True)
+download_photos(api, '/home/sintacks/Pictures/Album', redownload_all=True)

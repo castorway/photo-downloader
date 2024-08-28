@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 from tqdm import tqdm
 import datetime
+from heic2png import convert_single_heic_to_png
 
 
 def download_photos(api, photo_dir, sort_method='month', redownload_all=False):
@@ -9,10 +10,8 @@ def download_photos(api, photo_dir, sort_method='month', redownload_all=False):
     Download all photos in the iCloud library and sort.
 
     Sort methods:
-    - month: Photos are sorted into directories named YY-MM.
+    - month: Photos are sorted into directories named /YYYY/MM.
     '''
-
-    album = api.photos.all
 
     top_path = Path(photo_dir)
     
@@ -36,3 +35,7 @@ def download_photos(api, photo_dir, sort_method='month', redownload_all=False):
 
         with open(download_file, 'wb') as f:
             f.write(download.raw.read())
+
+        # check if image needs to be converted from HEIC
+        if str(download_file).lower().endswith(".heic"):
+            convert_single_heic_to_png(str(download_file))
