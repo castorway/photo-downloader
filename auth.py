@@ -1,5 +1,4 @@
 import sys
-import os
 from pyicloud import PyiCloudService
 
 def auth(
@@ -28,6 +27,6 @@ def auth(
 
             if not result:
                 print("Failed to request trust. You will likely be prompted for the code again in the coming weeks")
+                sys.exit(1)
 
-    print("Authenticated!")
     return api
