@@ -4,7 +4,7 @@ Script to automatically download all the photos from an iCloud drive to a filesy
 
 ## Usage
 
-Set the download target directory in `config.json`. Photos will be downloaded into subdirectories of this directory, labelled by year and month. For example, if `~/Photos` is the target directory, photos will be downloaded like this:
+Install the requirements, set the download target directory in `config.json`, and then run `python run.py`. Photos will be downloaded into subdirectories of this directory, labelled by year and month. For example, if `~/Photos` is the target directory, photos will be downloaded like this:
 
 * `~/Photos`
   * `2024/`
